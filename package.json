@@ -1,0 +1,45 @@
+{
+  "name": "sip-nonce",
+  "version": "0.0.1",
+  "description": "Small library for generating random SIP nonce values",
+  "keywords": [
+    "sip-nonce",
+    "sip",
+    "nonce"
+  ],
+  "homepage": "https://github.com/phonecloud-com/sip-nonce#readme",
+  "bugs": {
+    "url": "https://github.com/phonecloud-com/sip-nonce/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phonecloud-com/sip-nonce.git"
+  },
+  "license": "ISC",
+  "author": "Matt MacAdams",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build:esm": "tsc",
+    "build:cjs": "tsc -p tsconfig.cjs.json && mv dist-cjs/index.js dist/index.cjs; rm -fr dist-cjs/",
+    "build": "rm -rf dist && npm run build:esm && npm run build:cjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/node": "^20.19.27",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

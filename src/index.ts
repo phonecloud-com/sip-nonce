@@ -1,16 +1,14 @@
-const nonce = () => {
-	return randomString(randomInt(10,16));
-}
-
-function randomString(length:number) {
+const nonce = (minLength = 10, maxLength = 16) => {
     let res = '';
-	const offset = randomInt(2,11);
-	let charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var randChars = shuffleString(`${charset}${charset}${charset}`);
-    for ( let i = 0; i < length+offset+1; i++ ) {
-        res += randChars.charAt(Math.floor(Math.random() * randChars.length));
+	if(typeof maxLength != 'number' || maxLength > 24) maxLength = 24;
+    const length = randomInt(minLength, maxLength);
+    const offset = randomInt(1,17);
+    let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    chars = shuffleString(chars.repeat(5));
+    for (let i = 0; i < length + offset + 1; i++) {
+        res += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-    return res.substring(offset,offset+length);
+    return res.substring(offset, offset + length);
 }
 
 function randomInt(min:number, max?:number) {

@@ -1,2 +1,2 @@
-declare const _default: (minLength?: number, maxLength?: number) => string;
-export default _default;
+declare const nonce: (minLength?: number, maxLength?: number) => string;
+export default nonce;

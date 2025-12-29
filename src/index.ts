@@ -1,12 +1,11 @@
 const nonce = () => {
-	let result = randomString(randomInt(10,16));
-	return result;
+	return randomString(randomInt(10,16));
 }
 
 function randomString(length:number) {
     let res = '';
 	const offset = randomInt(2,11);
-	let charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz12345679';
+	let charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var randChars = shuffleString(`${charset}${charset}${charset}`);
     for ( let i = 0; i < length+offset+1; i++ ) {
         res += randChars.charAt(Math.floor(Math.random() * randChars.length));
@@ -14,22 +13,23 @@ function randomString(length:number) {
     return res.substring(offset,offset+length);
 }
 
-function randomInt(min?:number, max?:number) {
-	if (!min || min<1) min=1;
-	if (!max || max > 9007199254740991) max=9007199254740991;
+function randomInt(min:number, max?:number) {
+	if (!min || min<1 || typeof min != "number") min=1;
+	if (!max || max > 9007199254740991 || typeof min != "number") max=9007199254740991;
     min = Math.ceil(min);
     max = Math.floor(max);
-	if (min>max) return randomInt(min,min);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+	if (min>max) return randomInt(min);
+    return Math.floor(min + Math.random() * (max - min) + Math.random());
 }
 
 function shuffleString(str: string) {
     let arr = Array.from(str);
-    let currentIndex = arr.length, randIndex;
-    while (currentIndex !== 0) {
-        randIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        [arr[currentIndex], arr[randIndex]] = [arr[randIndex], arr[currentIndex]];
+    let currIndex = arr.length;
+	let randIndex;
+    while (currIndex !== 0) {
+        randIndex = Math.floor(Math.random() * currIndex);
+        currIndex--;
+        [arr[currIndex], arr[randIndex]] = [arr[randIndex], arr[currIndex]];
     }
     return arr.join('');
 }

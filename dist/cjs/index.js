@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const nonce = function (minLength = 8, maxLength = 10) {
+const nonce = function (minLength = 10, maxLength = 16) {
     if (typeof minLength != "number" || minLength < 8)
         minLength = 8;
     if (typeof maxLength != "number" || maxLength > 24)
         maxLength = 24;
     const length = randomInt(minLength, maxLength);
-    const offset = randomInt(1, 17);
+    const offset = randomInt(0, maxLength);
     let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    chars = shuffleString(chars.repeat(4));
+    chars = shuffleString(chars.repeat(3));
     let res = "";
     for (let i = 0; i < length + offset + 1; i++) {
         res += chars.charAt(Math.floor(Math.random() * chars.length));

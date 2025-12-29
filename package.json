@@ -16,12 +16,12 @@
     "url": "git+https://github.com/phonecloud-com/sip-nonce.git"
   },
   "license": "ISC",
-  "author": "Matt MacAdams",
+  "author": "PhoneCloud",
   "type": "module",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
     "build:esm": "tsc",
-    "build:cjs": "tsc -p tsconfig.cjs.json && mv dist-cjs/index.js dist/index.cjs; rm -fr dist-cjs/",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
     "build": "rm -rf dist && npm run build:esm && npm run build:cjs"
   },
   "exports": {

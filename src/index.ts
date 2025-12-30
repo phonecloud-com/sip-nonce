@@ -1,10 +1,14 @@
 const nonce = function (minLength = 10, maxLength = 12) {
-	if (typeof minLength != "number" || minLength < 8) minLength = 8;
-	if (typeof maxLength != "number" || maxLength > 24) maxLength = 24;
+	if (typeof minLength != "number" || minLength < 8 || minLength > 24) minLength = 24;
+	if (typeof maxLength != "number" || !maxLength) maxLength = minLength;
+	if (maxLength > 24) maxLength = 24;
+
 	const length = randomInt(minLength, maxLength);
 	const offset = randomInt(0, maxLength);
+
 	let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	chars = shuffleString(chars.repeat(3));
+
 	let res = "";
 	for (let i = 0; i < length + offset + 1; i++) {
 		res += chars.charAt(Math.floor(Math.random() * chars.length));

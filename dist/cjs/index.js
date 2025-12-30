@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const nonce = function (minLength = 10, maxLength = 16) {
+const nonce = function (minLength = 10, maxLength = 12) {
     if (typeof minLength != "number" || minLength < 8)
         minLength = 8;
     if (typeof maxLength != "number" || maxLength > 24)

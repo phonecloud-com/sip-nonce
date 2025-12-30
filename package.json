@@ -1,6 +1,6 @@
 {
 	"name": "sip-nonce",
-	"version": "0.2.8",
+	"version": "0.3.0",
 	"description": "Small library for generating random nonce values for SIP challenges",
 	"keywords": [
 		"sip-nonce",
@@ -39,7 +39,6 @@
 	"sideEffects": false,
 	"devDependencies": {
 		"prettier": "^3.7.4",
-		"ts-node": "^10.9.2",
 		"typescript": "^5.9.3"
 	}
 }

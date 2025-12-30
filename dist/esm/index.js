@@ -1,7 +1,11 @@
-const nonce = function (minLength = 10, maxLength = 12) {
+const nonce = function (minLength = 10, maxLength) {
     if (typeof minLength != "number" || minLength < 8)
-        minLength = 8;
-    if (typeof maxLength != "number" || maxLength > 24)
+        minLength = 10;
+    if (minLength > 24)
+        minLength = 24;
+    if (!maxLength || typeof maxLength != "number" || maxLength < minLength)
+        maxLength = minLength;
+    if (maxLength > 24)
         maxLength = 24;
     const length = randomInt(minLength, maxLength);
     const offset = randomInt(0, maxLength);

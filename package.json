@@ -1,6 +1,6 @@
 {
 	"name": "sip-nonce",
-	"version": "0.3.2",
+	"version": "0.3.4",
 	"description": "Small library for generating random nonce values for SIP challenges",
 	"keywords": [
 		"sip-nonce",

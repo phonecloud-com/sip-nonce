@@ -1,6 +1,7 @@
-const nonce = function (minLength = 10, maxLength = 12) {
-	if (typeof minLength != "number" || minLength < 8 || minLength > 24) minLength = 24;
-	if (typeof maxLength != "number" || !maxLength) maxLength = minLength;
+const nonce = function (minLength = 10, maxLength: number) {
+	if (typeof minLength != "number" || minLength < 8) minLength = 10;
+	if (minLength > 24) minLength = 24;
+	if (!maxLength || typeof maxLength != "number" || maxLength < minLength) maxLength = minLength;
 	if (maxLength > 24) maxLength = 24;
 
 	const length = randomInt(minLength, maxLength);

@@ -2,7 +2,7 @@
 
 Contains both CommonJS and ESM modules for generating SIP-compatible random string values between 10 and 24 chars in length.
 
-Note: for speed, this library does not use crypto libraries for generating random bytes or seed data. It just uses several iterations of A-Z,a-z,0-9, shuffled and then randomly sliced into a substring.
+Note: for speed, this library does not use crypto libraries for generating random bytes or seed data. It just uses several iterations of A-Z,a-z and 0-9 progressively shuffled array using Math.random() and then randomly sliced into a substring.
 
 **Installation**
 
